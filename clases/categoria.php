@@ -21,12 +21,12 @@ class Categoria{
        return $repuesta;
     }
     function eliminar($id){
-       $consulta = "UPDATE categorias SET estatus = 0 WHERE id = {$id}";
+       $consulta = "UPDATE categorias SET estatus = 1 WHERE id = {$id}";
        $repuesta = $this->conexion->query($consulta);
        return $repuesta;
 }
 function activar($id){
-       $consulta = "UPDATE categorias SET estatus = 1 WHERE id = {$id}";
+       $consulta = "UPDATE categorias SET estatus = 0 WHERE id = {$id}";
        $respuesta = $this->conexion->query($consulta);
        return $respuesta;
 }
@@ -40,6 +40,11 @@ function activar($id){
        $respuesta = $this->conexion->query($consulta);
        return $respuesta;
     }
+    function mostrarActivas(){
+    $consulta = "SELECT * FROM categorias WHERE estatus = 0";
+    return $this->conexion->query($consulta);
+}
+
 
 }
 ?>

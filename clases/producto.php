@@ -42,6 +42,18 @@ class Producto {
         $consulta = "SELECT * FROM productos WHERE id = {$id}";
         return $this->conexion->query($consulta);
     }
+    function sumarStock($id, $cantidad) {
+        $consulta = "UPDATE productos SET stock = stock + {$cantidad} WHERE id = {$id}";
+        return $this->conexion->query($consulta);
+    }
+    function restarStock($id, $cantidad) {
+        $consulta = "UPDATE productos SET stock = stock - {$cantidad} WHERE id = {$id}";
+        return $this->conexion->query($consulta);
+    }
+    function mostrarActivas(){
+    $consulta = "SELECT * FROM productos WHERE estatus = 0";
+    return $this->conexion->query($consulta);
+}
 
 }
 
