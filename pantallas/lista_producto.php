@@ -70,16 +70,19 @@
                             Editar
                         </button>
                         </a>
+                        <?php if ($fila["estatus"] == 0): ?>
                        <a href="../controladores/eliminar_producto.php?id=<?=$fila['id']?>">
                             <button type="submit" class="bg-red-600 hover:bg-red-700 text-white px-3 py-1 rounded">
                                 Eliminar
                             </button>
                         </a>
+                        <?php else: ?>
                         <a href="../controladores/activar_producto.php?id=<?=$fila['id']?>">
                             <button type="submit" class="bg-blue-600 hover:bg-blue-700 text-white px-3 py-1 rounded">
                                 activar
                             </button>
                         </a>
+                        <?php endif; ?>
                     </td>
                 </tr>
             </tbody>

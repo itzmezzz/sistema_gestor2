@@ -18,6 +18,25 @@ class Venta {
         $repuesta = $this->conexion->query($consulta);
              return $repuesta;
     }
-    
+    function eliminar($id){
+         $consulta = "UPDATE ventas SET estatus = 1 WHERE id = {$id}";
+         $respuesta = $this->conexion->query($consulta);
+       return $respuesta;
+     }
+     function activar($id){
+       $consulta = "UPDATE ventas SET estatus = 0 WHERE id = {$id}";
+       $respuesta = $this->conexion->query($consulta);
+       return $respuesta;
+     }
+     function actualizar($usuario_id, $total, $id){
+       $consulta = "UPDATE ventas SET usuario_id = {$usuario_id}, total = {$total} WHERE id = {$id}";
+       $respuesta = $this->conexion->query($consulta);
+       return $respuesta;
+     }
+        function buscarPorId($id){
+        $consulta = "SELECT * FROM ventas WHERE id = {$id}";
+        $respuesta = $this->conexion->query($consulta);
+        return $respuesta;
+        }
     
 }
