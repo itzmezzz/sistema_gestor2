@@ -27,13 +27,15 @@
                 </div>
                 <!-- Fin del logo y menú hamburguesa -->
                 <!-- Inicio del nombre de usuario -->
+                 <a href="../controladores/cerrar_sesion.php">
                 <div class="flex items-center space-x-4">
                     <div
-                        class="bg-gradient-to-r from-blue-600 to to-red-600 h-10 w-10 flex justify-center items-center text-white border-2 border-black">
-                        Zzz
+                        class="">
+                        cerrar sesión
                     </div>
                     <h1 class="text-black font-bold"></h1>
                 </div>
+                </a>
                 <!-- Fin del nombre de usuario -->
             </div>
         </div>
@@ -61,7 +63,7 @@
                     class="flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-blue-50 text-gray-700">Inicio</a>
                     <a href="lista_producto.php"
                     class="flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-blue-50 text-gray-700">Inventario</a>
-                    <a href="index.html"
+                    <a href="lista_venta.php"
                     class="flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-blue-50 text-gray-700">Ventas</a>
                     <a href="lista_usuario.php"
                     class="flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-blue-50 text-gray-700">Usuarios</a>

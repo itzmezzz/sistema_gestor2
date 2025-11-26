@@ -6,14 +6,14 @@ class Usuario {
         $this->conexion = new Conexion();
     }
 
-    function guardar($usuario, $correo, $contraseña) {
+    function guardar($usuario, $correo, $contraseña , $tipo) {
         //verificar si el usuario o correo ya existe
         $consulta_existente = "SELECT * FROM usuario WHERE usuario='{$usuario}' OR correo='{$correo}'";
         $resultado = $this->conexion->query($consulta_existente);
         if ($resultado->num_rows > 0) {
             return "existe";
         }
-    $consulta = "INSERT INTO usuario(id, usuario, correo, contraseña, tipo, estatus) VALUES (null,'{$usuario}', '{$correo}', '{$contraseña}', 1, 0 )";
+    $consulta = "INSERT INTO usuario(id, usuario, correo, contraseña, tipo, estatus) VALUES (null,'{$usuario}', '{$correo}', '{$contraseña}', {$tipo}, 0 )";
         return $this->conexion->query($consulta);
     }
 

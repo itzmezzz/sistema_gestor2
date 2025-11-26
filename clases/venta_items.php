@@ -20,4 +20,24 @@ function guardar($venta_id, $producto_id, $cantidad, $precio_unitario, $subtotal
         $repuesta = $this->conexion->query($consulta);
              return $repuesta;
     }
+    function eliminar($id){
+         $consulta = "UPDATE venta_items SET estatus = 1 WHERE id = {$id}";
+         $respuesta = $this->conexion->query($consulta);
+       return $respuesta;
+     }
+     function activar($id){
+       $consulta = "UPDATE venta_items SET estatus = 0 WHERE id = {$id}";
+       $respuesta = $this->conexion->query($consulta);
+       return $respuesta;
+     }
+     function actualizar($venta_id, $producto_id, $cantidad, $precio_unitario, $subtotal, $id){
+       $consulta = "UPDATE venta_items SET venta_id = {$venta_id}, producto_id = {$producto_id}, cantidad = {$cantidad}, precio_unitario = {$precio_unitario}, subtotal = {$subtotal} WHERE id = {$id}";
+       $respuesta = $this->conexion->query($consulta);
+       return $respuesta;
+     }
+        function buscarPorId($id){
+        $consulta = "SELECT * FROM venta_items WHERE id = {$id}";
+        $respuesta = $this->conexion->query($consulta);
+        return $respuesta;
+        }
 }

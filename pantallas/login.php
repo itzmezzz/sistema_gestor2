@@ -19,6 +19,11 @@
 			<input type="text" placeholder="Name" name="usuario" requiered/>
 			<input type="email" placeholder="Email" name="correo" required/>
 			<input type="password" placeholder="Password" name="contraseña" required/>
+            <select name="tipo" class="w-full p-2 border border-gray-300 rounded-md" required>
+    		<option value="">Seleccione el tipo de usuario</option>
+    		<option value="0">Administrador</option>
+    		<option value="1">Usuario normal</option>
+			</select>
 			<button value="guardar">registrarse</button>
 		</form>
 	</div>

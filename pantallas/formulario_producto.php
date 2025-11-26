@@ -10,7 +10,7 @@
     <?php
     include('../clases/categoria.php');
     $clase = new Categoria();
-    $respuesta = $clase->mostrar();
+    $respuesta = $clase->mostrarActivas();
     ?>
     <?php include 'menu.php'?> 
     <form action=" ../controladores/insertar_producto.php" method="POST">

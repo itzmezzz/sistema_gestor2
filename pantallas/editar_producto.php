@@ -1,13 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title></title>
-    <link rel="stylesheet" href="../src/output.css">
-</head>
-<body>
-    <?php
+<?php
     session_start();
 if (!isset($_SESSION['tipo']) || $_SESSION['tipo'] != 0) {
    echo "<script>
@@ -16,6 +7,7 @@ if (!isset($_SESSION['tipo']) || $_SESSION['tipo'] != 0) {
     </script>";
     exit;
 }
+ 
     include('../clases/producto.php');
     $clase = new Producto();
     $respuesta = $clase->mostrar();
@@ -34,13 +26,24 @@ if (!isset($_SESSION['tipo']) || $_SESSION['tipo'] != 0) {
     if (!$datos) {
         die("Error: No se encontró el producto con el ID recibido.");
     }
-    ?>
-    <?php 
-		include('menu.php');
+    
+    
+		
 		include('../clases/categoria.php');
 		$clase = new Categoria();
-		$resultado = $clase->mostrar();
-	?>
+		$resultado = $clase->mostrarActivas();
+	
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <link rel="stylesheet" href="../src/output.css">
+</head>
+<body>
+    <?php include 'menu.php'?>
     <form class="form" id="formulario" action="../controladores/actualizar_producto.php" method="POST">
     <main class="pt-20 px-4 pb-8">
         

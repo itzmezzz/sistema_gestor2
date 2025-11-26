@@ -10,11 +10,12 @@ if (!isset($_SESSION['tipo']) || $_SESSION['tipo'] != 0) {
 $usuario = $_POST['usuario'];
 $correo = $_POST['correo'];
 $contraseña = $_POST['contraseña'];
+$tipo = $_POST['tipo'];
 
 include('../clases/usuario.php');
 
 $clase = new Usuario();
-$resultado = $clase->guardar($usuario, $correo, $contraseña);
+$resultado = $clase->guardar($usuario, $correo, $contraseña, $tipo);
 
 if ($resultado === "existe") {
     echo "<script>
@@ -23,7 +24,8 @@ if ($resultado === "existe") {
     </script>";
     exit;
 }else if ($resultado) {
-    echo "Éxito";
+    header('Location: ../pantallas/lista_usuario.php');
+    exit;
 } else {
     echo "Error al guardar";
 }
