@@ -1,6 +1,6 @@
 <?php 
 class Producto {
-
+    public $conexion;
     function __construct() {
         require_once('conexion.php');
         $this->conexion = new Conexion();
@@ -38,21 +38,61 @@ class Producto {
                      WHERE id = {$id}";
         return $this->conexion->query($consulta);
     }
-    function buscarPorId($id){
-        $consulta = "SELECT * FROM productos WHERE id = {$id}";
-        return $this->conexion->query($consulta);
+
+    function obtenerStock($id) {
+    $consulta = "SELECT stock FROM productos WHERE id = {$id} LIMIT 1";
+    $resultado = $this->conexion->query($consulta);
+
+    if ($resultado && $resultado->num_rows > 0) {
+        $fila = $resultado->fetch_assoc();
+        return intval($fila['stock']);
+    }
+
+    return 0;
+
     }
     function sumarStock($id, $cantidad) {
         $consulta = "UPDATE productos SET stock = stock + {$cantidad} WHERE id = {$id}";
         return $this->conexion->query($consulta);
     }
-    function restarStock($id, $cantidad) {
-        $consulta = "UPDATE productos SET stock = stock - {$cantidad} WHERE id = {$id}";
-        return $this->conexion->query($consulta);
+    public function restarStock($id, $cantidad) {
+    // Validar valores
+    if ($id <= 0 || $cantidad <= 0) {
+        return false;
     }
-    function mostrarActivas(){
-    $consulta = "SELECT * FROM productos WHERE estatus = 0";
-    return $this->conexion->query($consulta);
+
+    
+    $sql = "UPDATE productos SET stock = stock - ? WHERE id = ?";
+
+    $stmt = $this->conexion->prepare($sql);
+    if (!$stmt) {
+        return false;
+    }
+
+    $stmt->bind_param("ii", $cantidad, $id);
+    return $stmt->execute();
+}
+   function mostrarActivas() {
+    $consulta = "SELECT id, nombre, precio_venta FROM productos WHERE estatus = 0";
+    $resultado = $this->conexion->query($consulta);
+
+    // Si la consulta falló, devolver array vacío
+    if (!$resultado) {
+        return [];
+    }
+
+    $productos = [];
+
+    // Si es un mysqli_result, convertimos a array
+    if ($resultado instanceof mysqli_result) {
+        while ($fila = $resultado->fetch_assoc()) {
+            // Convertir precio a número
+            $fila['precio_venta'] = (float) $fila['precio_venta'];
+            $productos[] = $fila;
+        }
+    }
+
+    return $productos; // Siempre retorna un array
 }
 
 }

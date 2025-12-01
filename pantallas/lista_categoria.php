@@ -1,3 +1,16 @@
+ <?php 
+ session_start();
+     if (!isset($_SESSION['tipo'])) {
+    header("Location: login.php");
+    exit;
+}
+ 
+    include('menu.php');
+    include('../clases/categoria.php');
+    $clase = new Categoria();
+    $Resultado = $clase->mostrar();
+    ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,12 +20,7 @@
     <link rel="stylesheet" href="../src/output.css">
 </head>
 <body>
-    <?php 
-    include('menu.php');
-    include('../clases/categoria.php');
-    $clase = new Categoria();
-    $Resultado = $clase->mostrar();
-    ?>
+   
     <main class="pt-20 px-4 pb-8">
        <div class="p-6">
 

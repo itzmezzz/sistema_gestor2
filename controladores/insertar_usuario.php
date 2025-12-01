@@ -20,7 +20,7 @@ $resultado = $clase->guardar($usuario, $correo, $contraseña, $tipo);
 if ($resultado === "existe") {
     echo "<script>
         alert('El usuario ya existe. Intenta con otro nombre.');
-        window.location.href = '../pantallas/login.php';
+        window.location.href = '../pantallas/lista_usuario.php';
     </script>";
     exit;
 }else if ($resultado) {

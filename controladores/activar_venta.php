@@ -1,7 +1,6 @@
 <?php
 session_start();
 
-// Validar que venga el ID
 if (!isset($_GET['id']) || empty($_GET['id'])) {
     die("Error: No se recibió un ID válido.");
 }
@@ -16,25 +15,25 @@ $venta = new Venta();
 $producto = new Producto();
 $items = new Venta_items();
 
-// 1. Obtener los productos que pertenecen a esta venta
-$lista = $items->buscarPorId($id); // Esta función debe existir
+// 1. ITEMS DE LA VENTA
+$lista = $items->buscarPorId($id);
 
 while ($fila = $lista->fetch_assoc()) {
 
     $producto_id = $fila['producto_id'];
     $cantidad = $fila['cantidad'];
 
-    // 2. Regresar el stock al producto
-    $producto->sumarStock($producto_id, $cantidad);
+    // RESTAR stock porque se activa la venta nuevamente
+    $producto->restarStock($producto_id, $cantidad);
 }
 
-// 3. Eliminar o desactivar la venta
-$resultado = $venta->eliminar($id);
+// 2. ACTIVAR VENTA
+$resultado = $venta->activar($id);
 
 if ($resultado) {
     header('Location: ../pantallas/lista_ventas.php');
     exit;
 } else {
-    echo "Error al eliminar la venta.";
+    echo "Error al activar la venta.";
 }
 ?>

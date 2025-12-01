@@ -1,3 +1,16 @@
+<?php 
+session_start();
+ 
+ if (!isset($_SESSION['tipo'])) {
+    header("Location: login.php");
+    exit;
+}
+ 
+
+include('menu.php');  
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,7 +20,7 @@
     <title>Configuración</title>
     <link rel="stylesheet" href="../src/output.css">
 </head>
-<?php  include('menu.php');  ?>
+
 <body class="min-h-screen flex flex-col">
         <!-- Contenido -->
     <main class="flex-grow pt-20 px-4 pb-8">

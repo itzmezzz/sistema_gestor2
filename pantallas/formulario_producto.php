@@ -1,3 +1,15 @@
+ <?php
+ session_start();
+    if (!isset($_SESSION['tipo'])) {
+    header("Location: login.php");
+    exit;
+}
+ 
+  include 'menu.php';
+    include('../clases/categoria.php');
+    $clase = new Categoria();
+    $respuesta = $clase->mostrarActivas();
+    ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,12 +19,7 @@
     <link rel="stylesheet" href="../src/output.css">
 </head>
 <body>
-    <?php
-    include('../clases/categoria.php');
-    $clase = new Categoria();
-    $respuesta = $clase->mostrarActivas();
-    ?>
-    <?php include 'menu.php'?> 
+   
     <form action=" ../controladores/insertar_producto.php" method="POST">
        <main class="pt-20 px-4 pb-8">
         <div class="mx-auto py-8 max-w-2xl">

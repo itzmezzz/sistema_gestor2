@@ -1,3 +1,15 @@
+<?php
+session_start();
+if (!isset($_SESSION['tipo'])) {
+    header("Location: login.php");
+    exit;
+}
+ 
+
+include 'menu.php';
+
+
+?>
 <!DOCTYPE html>
 <html lang="es" class="">
 
@@ -10,7 +22,7 @@
 
 <body>
 
-     <?php include 'menu.php'?>
+     
      <form class="form" id="formulario" action="../controladores/insertar_categoria.php" method="POST">
 
     <!-- Contenido -->
