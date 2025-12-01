@@ -16,7 +16,7 @@
 			<h1>Crear cuenta</h1>
 			
 			<span>nombre de usuario</span>
-			<input type="text" placeholder="Name" name="usuario" requiered/>
+			<input type="text" placeholder="Name" name="usuario" required/>
 			<input type="email" placeholder="Email" name="correo" required/>
 			<input type="password" placeholder="Password" name="contraseña" required/>
             <select name="tipo" class="w-full p-2 border border-gray-300 rounded-md" required>
@@ -55,7 +55,6 @@
 		</div>
 	</div>
 </div>
-
 <script src="../js/script.js"></script>
 </body>
 </html>

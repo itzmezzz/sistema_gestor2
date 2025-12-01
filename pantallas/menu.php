@@ -1,10 +1,11 @@
+
 <!DOCTYPE html>
 <html lang="es">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inicio - LEGO</title>
+    <title></title>
     <link rel="stylesheet" href="src/output.css?=1.0">
 
 </head>
@@ -63,7 +64,7 @@
                     class="flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-blue-50 text-gray-700">Inicio</a>
                     <a href="lista_producto.php"
                     class="flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-blue-50 text-gray-700">Inventario</a>
-                    <a href="lista_venta.php"
+                    <a href="lista_ventas.php"
                     class="flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-blue-50 text-gray-700">Ventas</a>
                     <a href="lista_usuario.php"
                     class="flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-blue-50 text-gray-700">Usuarios</a>

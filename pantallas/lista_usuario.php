@@ -1,14 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title></title>
-    <link rel="stylesheet" href="../src/output.css">
-</head>
-<body>
-    <?php 
-      session_start();
+<?php 
+session_start();
+     if (!isset($_SESSION['tipo'])) {
+    header("Location: login.php");
+    exit;
+}
+      
 if (!isset($_SESSION['tipo']) || $_SESSION['tipo'] != 0) {
    echo "<script>
         alert('Acceso denegado: esta función solo es para administradores.');
@@ -21,6 +17,17 @@ if (!isset($_SESSION['tipo']) || $_SESSION['tipo'] != 0) {
     $clase = new Usuario();
     $Resultado = $clase->mostrar();
     ?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <link rel="stylesheet" href="../src/output.css">
+</head>
+<body>
+    
     <main class="pt-20 px-4 pb-8">
        <div class="p-6  ">
 
